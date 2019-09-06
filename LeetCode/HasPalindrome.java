@@ -14,6 +14,8 @@ public class HasPalindrome {
         hasPalindrome.print("aa bb c"); // t
         hasPalindrome.print("aa bb c a"); // f
         hasPalindrome.print("aa bb c a c"); // t
+        hasPalindrome.print("Aa bb C a c"); // t
+        hasPalindrome.print("aa Bb c A"); // f
     }
 
     private void print(String word) {
