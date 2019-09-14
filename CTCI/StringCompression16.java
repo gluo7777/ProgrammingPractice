@@ -14,30 +14,32 @@ public class StringCompression16 {
         s.test("aaabb", "a3b2");
     }
 
-    protected void test(String expected, String actual) {
-        System.out.printf("Expected=%s. Actual=%s\n", expected, actual);
+    protected void test(String raw, String expected) {
+        System.out.printf("Compressing %s. Expected=%s. Actual=%s\n", raw, expected, compressIfNeeded(raw));
     }
 
     protected String compressIfNeeded(String str) {
 
-        if (str == null || str.length <= 2) {
+        if (str == null || str.length() <= 2) {
             return str;
         }
 
         LinkedList<String> cmp = new LinkedList<>();
 
-        int count = 0;
+        int count = 1;
         char prev = str.charAt(0);
         for (int i = 1; i < str.length(); i++) {
             char cur = str.charAt(i);
             if (cur != prev) {
-                cmp.add(cur + Integer.toString(count));
+                cmp.add(prev + Integer.toString(count));
+                prev = cur;
+                count = 1;
             } else {
                 count += 1;
             }
         }
 
-        cmp.add(cur + Integer.toString(count));
+        cmp.add(str.charAt(str.length() - 1) + Integer.toString(count));
 
         if (cmp.size() * 2 < str.length()) {
             char[] buf = new char[cmp.size() * 2];
