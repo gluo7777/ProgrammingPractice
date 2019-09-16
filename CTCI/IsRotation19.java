@@ -16,6 +16,8 @@ public class IsRotation19 {
     }
 
     /**
+     * Idea is to locate rotation point x and then check if s1[0,x] is a substring
+     * of s2.
      * 
      * @param s1 - rotated string
      * @param s2 - original string
