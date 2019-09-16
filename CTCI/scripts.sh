@@ -22,7 +22,7 @@ execjava(){
     java -version
     if [ -z "$1" ];then
         echo "Missing file parameter"
-    elif [[ $1 =~ ([A-Z][A-Za-z0-9_]+)\.java$ ]] && [[ -e "${BASH_REMATCH[1]}.class" ]]; then
+    elif [[ $1 =~ ([A-Z][A-Za-z0-9_]+)\.java$ ]]; then
         javac $1 &&\
         java "${BASH_REMATCH[1]}"
     fi
